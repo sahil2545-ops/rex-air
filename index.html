@@ -3,297 +3,203 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>REX Aerospace | Next-Gen Fusion Propulsion Systems</title>
+    <title>REX Aerospace | SpaceX Style Propulsion</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
         }
 
         body {
-            background-color: #050711;
-            color: #ffffff;
+            background-color: #000;
+            color: #fff;
             overflow-x: hidden;
         }
 
-        #starfield {
+        /* Header Navigation - SpaceX & L&T Fusion */
+        header {
             position: fixed;
             top: 0;
             left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: -1;
-        }
-
-        /* Header Navigation */
-        header {
+            width: 100%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 12px 8%;
-            background: rgba(10, 15, 30, 0.85);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(0, 210, 255, 0.3);
-            position: sticky;
-            top: 0;
-            z-index: 100;
+            padding: 20px 8%;
+            z-index: 1000;
+            background: linear-gradient(180deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%);
         }
 
         .logo-container {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 12px;
         }
 
-        .svg-logo-wrapper {
-            width: 48px;
-            height: 48px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            filter: drop-shadow(0px 0px 8px rgba(0, 210, 255, 0.6));
+        .logo-svg {
+            width: 40px;
+            height: 40px;
         }
 
         .logo-text {
-            font-size: 1.4rem;
-            font-weight: 800;
-            letter-spacing: 2px;
-            color: #ffffff;
-        }
-
-        .logo-text span {
-            color: #00d2ff;
-        }
-
-        .nav-buttons {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
-
-        /* Gaming Launch Button */
-        .launch-btn {
-            background: linear-gradient(135deg, #00d2ff, #0044ff);
+            font-size: 1.5rem;
+            font-weight: 900;
+            letter-spacing: 4px;
             color: #fff;
-            padding: 8px 16px;
-            border-radius: 20px;
+            text-transform: uppercase;
+        }
+
+        .menu-btn {
+            background: transparent;
             border: none;
-            font-weight: 700;
-            font-size: 0.85rem;
-            cursor: pointer;
-            box-shadow: 0 0 15px rgba(0, 210, 255, 0.5);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .launch-btn:hover {
-            transform: scale(1.08);
-            box-shadow: 0 0 25px rgba(0, 210, 255, 0.8);
-        }
-
-        .insta-btn {
-            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
             color: #fff;
-            padding: 8px 18px;
-            border-radius: 20px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.85rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            box-shadow: 0 0 12px rgba(220, 39, 67, 0.4);
-            transition: transform 0.2s ease;
+            font-size: 1.5rem;
+            cursor: pointer;
         }
 
-        .insta-btn:hover {
-            transform: scale(1.05);
-        }
-
-        /* Flying Rocket Animation element */
-        #flying-rocket {
-            position: fixed;
-            bottom: -100px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 3.5rem;
-            z-index: 999;
-            pointer-events: none;
-            transition: none;
-            filter: drop-shadow(0 0 20px rgba(0, 210, 255, 0.9));
-        }
-
-        /* Hero Section */
-        .hero {
-            min-height: 80vh;
+        /* SpaceX Style Fullscreen Hero Section */
+        .spacex-hero {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)), 
+                        url('https://images.unsplash.com/photo-1517976487492-5750f3195933?q=80&w=1200&auto=format&fit=crop') center/cover no-repeat;
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 40px 20px;
+            justify-content: flex-end;
+            padding: 0 8% 80px 8%;
         }
 
-        .badge {
-            background: rgba(0, 210, 255, 0.1);
-            border: 1px solid #00d2ff;
-            color: #00d2ff;
-            padding: 6px 18px;
-            border-radius: 20px;
-            font-size: 0.85rem;
+        .hero-date {
+            font-size: 0.9rem;
             letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 20px;
-        }
-
-        .hero h1 {
-            font-size: clamp(2.2rem, 5vw, 4rem);
-            font-weight: 900;
-            letter-spacing: 2px;
-            margin-bottom: 15px;
-            background: linear-gradient(180deg, #ffffff 0%, #a5c9ff 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero p {
-            font-size: clamp(0.95rem, 2vw, 1.2rem);
             color: #a0aec0;
-            max-width: 700px;
-            line-height: 1.6;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 900;
+            line-height: 1.05;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            max-width: 800px;
             margin-bottom: 30px;
         }
 
-        #fusion-canvas {
-            width: 220px;
-            height: 220px;
-            margin: 10px auto;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 1.8rem;
-            margin-bottom: 35px;
-            color: #00d2ff;
+        .watch-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 32px;
+            border: 2px solid #fff;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.85rem;
             letter-spacing: 2px;
             text-transform: uppercase;
-        }
-
-        .rocket-showcase {
-            background: rgba(15, 23, 42, 0.8);
-            border: 1px solid rgba(0, 210, 255, 0.4);
-            border-radius: 20px;
-            padding: 30px;
-            backdrop-filter: blur(10px);
-            margin-bottom: 50px;
-            text-align: center;
-            box-shadow: 0 0 30px rgba(0, 210, 255, 0.15);
-        }
-
-        .rocket-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            margin-bottom: 20px;
-        }
-
-        .rocket-card-item {
-            background: rgba(5, 10, 25, 0.6);
-            border: 1px solid rgba(0, 210, 255, 0.2);
-            border-radius: 14px;
-            padding: 20px;
-            text-align: center;
-        }
-
-        .rocket-card-item h4 {
-            color: #00d2ff;
-            margin-bottom: 10px;
-            font-size: 1.2rem;
-        }
-
-        .rocket-card-item p {
-            color: #94a3b8;
-            font-size: 0.9rem;
-        }
-
-        .rocket-info h3 {
-            font-size: 1.5rem;
-            color: #ffffff;
-            margin-bottom: 8px;
-        }
-
-        .rocket-info p {
-            color: #94a3b8;
-            font-size: 0.95rem;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-        }
-
-        .card {
-            background: rgba(15, 23, 42, 0.6);
-            border: 1px solid rgba(0, 210, 255, 0.15);
-            border-radius: 16px;
-            padding: 25px;
-            backdrop-filter: blur(10px);
+            width: fit-content;
             transition: all 0.3s ease;
         }
 
-        .card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(0, 210, 255, 0.5);
+        .watch-btn:hover {
+            background: #fff;
+            color: #000;
         }
 
-        .card h3 {
-            font-size: 1.2rem;
-            color: #ffffff;
-            margin-bottom: 10px;
+        /* L&T Style Section Header & Cards */
+        .section-container {
+            padding: 80px 8%;
+            background: #0b0d17;
         }
 
-        .card p {
-            color: #94a3b8;
-            font-size: 0.9rem;
-            line-height: 1.5;
+        .lt-header {
+            margin-bottom: 40px;
         }
 
-        .founder-box {
-            text-align: center;
-            background: linear-gradient(135deg, rgba(15, 23, 42, 0.8), rgba(30, 58, 138, 0.3));
-            border: 1px solid rgba(0, 210, 255, 0.3);
-            border-radius: 20px;
-            padding: 35px 20px;
-            margin-top: 40px;
-        }
-
-        .founder-name {
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: #ffffff;
-            margin-top: 10px;
-        }
-
-        .founder-title {
-            color: #00d2ff;
+        .lt-title {
+            font-size: 2rem;
+            font-weight: 800;
             letter-spacing: 2px;
-            font-size: 0.85rem;
-            margin-top: 5px;
+            text-transform: uppercase;
+            color: #fff;
+            margin-bottom: 15px;
+        }
+
+        .lt-desc {
+            color: #94a3b8;
+            max-width: 700px;
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+
+        /* Horizontal Slider / Grid Cards */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .lt-card {
+            position: relative;
+            height: 380px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            transition: transform 0.3s ease;
+        }
+
+        .lt-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .lt-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 25px;
+            background: linear-gradient(360deg, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0) 100%);
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .card-overlay h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .arrow-circle {
+            width: 40px;
+            height: 40px;
+            background: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #000;
+            font-weight: bold;
+            font-size: 1.2rem;
         }
 
         footer {
             text-align: center;
-            padding: 25px 20px;
-            background: rgba(5, 7, 17, 0.9);
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 30px 20px;
+            background: #000;
+            border-top: 1px solid rgba(255,255,255,0.1);
             color: #64748b;
             font-size: 0.85rem;
         }
@@ -306,202 +212,77 @@
 </head>
 <body>
 
-    <canvas id="starfield"></canvas>
-
-    <!-- Flying Rocket Game Element -->
-    <div id="flying-rocket">🚀</div>
-
-    <!-- Header Navigation with Logo & Launch Game Button -->
+    <!-- Navigation Header -->
     <header>
         <div class="logo-container">
-            <div class="svg-logo-wrapper">
-                <svg viewBox="0 0 100 100" width="100%" height="100%">
-                    <defs>
-                        <linearGradient id="rexGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" stop-color="#2b589c" />
-                            <stop offset="100%" stop-color="#00d2ff" />
-                        </linearGradient>
-                    </defs>
-                    <path d="M 20,48 L 30,22 L 50,40 L 70,22 L 80,48 Z" fill="none" stroke="url(#rexGrad)" stroke-width="5" stroke-linejoin="round"/>
-                    <path d="M 50,12 L 50,40" stroke="url(#rexGrad)" stroke-width="5" stroke-linecap="round"/>
-                    <line x1="25" y1="53" x2="75" y2="53" stroke="url(#rexGrad)" stroke-width="4" stroke-linecap="round"/>
-                    <path d="M 15,75 Q 60,65 85,25" fill="none" stroke="#00d2ff" stroke-width="4" stroke-linecap="round"/>
-                </svg>
-            </div>
-            <div class="logo-text">REX <span>AEROSPACE</span></div>
+            <!-- Exact REX Crown Vector Logo -->
+            <svg class="logo-svg" viewBox="0 0 100 100">
+                <defs>
+                    <linearGradient id="rexGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#00d2ff" />
+                        <stop offset="100%" stop-color="#0044ff" />
+                    </linearGradient>
+                </defs>
+                <path d="M 20,48 L 30,22 L 50,40 L 70,22 L 80,48 Z" fill="none" stroke="url(#rexGrad)" stroke-width="6" stroke-linejoin="round"/>
+                <path d="M 50,12 L 50,40" stroke="url(#rexGrad)" stroke-width="6" stroke-linecap="round"/>
+                <line x1="25" y1="53" x2="75" y2="53" stroke="url(#rexGrad)" stroke-width="5" stroke-linecap="round"/>
+                <path d="M 15,75 Q 60,65 85,25" fill="none" stroke="#00d2ff" stroke-width="5" stroke-linecap="round"/>
+            </svg>
+            <div class="logo-text">REX</div>
         </div>
-        
-        <div class="nav-buttons">
-            <button class="launch-btn" onclick="launchRocket()">🚀 Launch Rocket</button>
-            <a href="https://www.instagram.com/rexaerospace?igsh=cnR2M3d2M2ZzZDZi" target="_blank" class="insta-btn">
-                📷 Instagram
-            </a>
-        </div>
+        <button class="menu-btn">☰</button>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="badge">🇮🇳 Aneutronic Fusion Technology</div>
-        <h1>POWERING THE INTERPLANETARY FUTURE</h1>
-        <p>Developing next-generation ASTRAEA-1 & Laser B-11 fusion propulsion engines to accelerate deep space exploration.</p>
-        <canvas id="fusion-canvas"></canvas>
+    <!-- SpaceX Style Full Screen Rocket Hero Section -->
+    <section class="spacex-hero">
+        <div class="hero-date">AUGUST 2026</div>
+        <h1 class="hero-title">REX-1'S FIRST INTERSTELLAR FLIGHT TEST</h1>
+        <a href="https://www.instagram.com/rexaerospace?igsh=cnR2M3d2M2ZzZDZi" target="_blank" class="watch-btn">
+            LEARN MORE &rarr;
+        </a>
     </section>
 
-    <!-- Content Area -->
-    <div class="container">
-        <h2 class="section-title">Launch Vehicles & Fleet 🚀</h2>
-        <div class="rocket-showcase">
-            <div class="rocket-grid">
-                <div class="rocket-card-item">
-                    <h4>REX-1 (Standard)</h4>
-                    <p>Titanium Silver Finish with Laser B-11 Fusion Engine & Indian Tricolor Integration.</p>
-                </div>
-                <div class="rocket-card-item">
-                    <h4>REX-1 Interstellar</h4>
-                    <p>Advanced aerodynamic striping configuration built for deep space planetary transit.</p>
-                </div>
-                <div class="rocket-card-item">
-                    <h4>REX-1 Heavy (Hex-Armor)</h4>
-                    <p>Copper-Blue Hexagonal thermal shielding for extreme atmospheric re-entry.</p>
-                </div>
-            </div>
-            <div class="rocket-info">
-                <h3>REX-1 Interstellar Prototype Concepts</h3>
-                <p>Equipped with Laser B-11 Fusion Engines & Advanced Thermal Shielding 🇮🇳</p>
-            </div>
+    <!-- L&T Style Cards Section -->
+    <section class="section-container">
+        <div class="lt-header">
+            <h2 class="lt-title">FROM PROPULSION TO DEEP SPACE</h2>
+            <p class="lt-desc">REX Aerospace leads the next generation of fusion propulsion systems. Powered by ASTRAEA-1 and Laser B-11 Engines for fast interplanetary transit.</p>
         </div>
 
-        <h2 class="section-title">Core Propulsion Tech</h2>
-        <div class="grid">
-            <div class="card">
-                <h3>⚛️ Laser B-11 Fusion Engine</h3>
-                <p>Direct energy conversion using advanced laser confinement, producing ultra-high exhaust velocities for deep space transit.</p>
+        <div class="card-grid">
+            <!-- Card 1 -->
+            <div class="lt-card">
+                <img src="https://images.unsplash.com/photo-1541185933-ef5d8ed016c2?q=80&w=800&auto=format&fit=crop" alt="Laser B-11 Engine">
+                <div class="card-overlay">
+                    <h3>Laser B-11 Engine</h3>
+                    <div class="arrow-circle">&rarr;</div>
+                </div>
             </div>
-            <div class="card">
-                <h3>🌌 Interplanetary Transit</h3>
-                <p>Designed for fast-transit Earth-to-Mars missions, reducing travel duration while protecting payloads with magnetic field shields.</p>
-            </div>
-            <div class="card">
-                <h3>⚡ High-Efficiency Nozzles</h3>
-                <p>Superconducting magnetic nozzles engineered for dynamic exhaust vector control without structural wear.</p>
-            </div>
-        </div>
 
-        <div class="founder-box">
-            <div class="svg-logo-wrapper" style="margin: 0 auto; width: 60px; height: 60px;">
-                <svg viewBox="0 0 100 100" width="100%" height="100%">
-                    <path d="M 20,48 L 30,22 L 50,40 L 70,22 L 80,48 Z" fill="none" stroke="url(#rexGrad)" stroke-width="5" stroke-linejoin="round"/>
-                    <path d="M 50,12 L 50,40" stroke="url(#rexGrad)" stroke-width="5" stroke-linecap="round"/>
-                    <line x1="25" y1="53" x2="75" y2="53" stroke="url(#rexGrad)" stroke-width="4" stroke-linecap="round"/>
-                    <path d="M 15,75 Q 60,65 85,25" fill="none" stroke="#00d2ff" stroke-width="4" stroke-linecap="round"/>
-                </svg>
+            <!-- Card 2 -->
+            <div class="lt-card">
+                <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=800&auto=format&fit=crop" alt="Interplanetary Transit">
+                <div class="card-overlay">
+                    <h3>Interplanetary Transit</h3>
+                    <div class="arrow-circle">&rarr;</div>
+                </div>
             </div>
-            <div class="founder-name">SAHIL</div>
-            <div class="founder-title">FOUNDER & CHIEF PROPULSION ARCHITECT</div>
-            <p style="color: #94a3b8; max-width: 600px; margin: 15px auto 0; font-size: 0.9rem;">
-                Leading REX Aerospace to revolutionize spaceflight technology through high-efficiency fusion power.
-            </p>
+
+            <!-- Card 3 -->
+            <div class="lt-card">
+                <img src="https://images.unsplash.com/photo-1614728894747-a83421e2b9c9?q=80&w=800&auto=format&fit=crop" alt="REX-1 Fleet">
+                <div class="card-overlay">
+                    <h3>REX Heavy Launchers</h3>
+                    <div class="arrow-circle">&rarr;</div>
+                </div>
+            </div>
         </div>
-    </div>
+    </section>
 
     <footer>
-        &copy; 2026 REX Aerospace Systems. Follow us on <a href="https://www.instagram.com/rexaerospace?igsh=cnR2M3d2M2ZzZDZi" target="_blank">Instagram (@rexaerospace)</a>
+        &copy; 2026 REX Aerospace Systems | Founder: Sahil <br>
+        Follow us on <a href="https://www.instagram.com/rexaerospace?igsh=cnR2M3d2M2ZzZDZi" target="_blank">Instagram (@rexaerospace)</a>
     </footer>
 
-    <script>
-        // Starfield Canvas
-        const canvas = document.getElementById('starfield');
-        const ctx = canvas.getContext('2d');
-
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-        resizeCanvas();
-        window.addEventListener('resize', resizeCanvas);
-
-        const stars = Array.from({ length: 180 }, () => ({
-            x: Math.random() * canvas.width,
-            y: Math.random() * canvas.height,
-            size: Math.random() * 1.8,
-            speed: Math.random() * 0.4 + 0.1,
-            opacity: Math.random()
-        }));
-
-        function animateStars() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            stars.forEach(star => {
-                star.y -= star.speed;
-                if (star.y < 0) star.y = canvas.height;
-                ctx.fillStyle = `rgba(0, 210, 255, ${star.opacity})`;
-                ctx.beginPath();
-                ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
-                ctx.fill();
-            });
-            requestAnimationFrame(animateStars);
-        }
-        animateStars();
-
-        // 3D Engine Core Visualizer
-        const fCanvas = document.getElementById('fusion-canvas');
-        const fCtx = fCanvas.getContext('2d');
-        fCanvas.width = 220;
-        fCanvas.height = 220;
-
-        let angle = 0;
-        function drawFusionCore() {
-            fCtx.clearRect(0, 0, 220, 220);
-            const cx = 110, cy = 110;
-
-            const gradient = fCtx.createRadialGradient(cx, cy, 10, cx, cy, 60);
-            gradient.addColorStop(0, 'rgba(0, 210, 255, 0.9)');
-            gradient.addColorStop(0.5, 'rgba(0, 150, 255, 0.4)');
-            gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
-            fCtx.fillStyle = gradient;
-            fCtx.beginPath();
-            fCtx.arc(cx, cy, 60, 0, Math.PI * 2);
-            fCtx.fill();
-
-            for (let i = 0; i < 3; i++) {
-                fCtx.save();
-                fCtx.translate(cx, cy);
-                fCtx.rotate(angle * (i + 1) * 0.5);
-                fCtx.strokeStyle = i === 0 ? '#00d2ff' : (i === 1 ? '#0077ff' : '#ffffff');
-                fCtx.lineWidth = 2;
-                fCtx.beginPath();
-                fCtx.ellipse(0, 0, 70 - (i * 10), 22 + (i * 6), Math.PI / 4 * i, 0, Math.PI * 2);
-                fCtx.stroke();
-                fCtx.restore();
-            }
-
-            angle += 0.02;
-            requestAnimationFrame(drawFusionCore);
-        }
-        drawFusionCore();
-
-        // Rocket Launch Game Function
-        function launchRocket() {
-            const rocket = document.getElementById('flying-rocket');
-            rocket.style.transition = 'none';
-            rocket.style.bottom = '-100px';
-            rocket.style.opacity = '1';
-
-            setTimeout(() => {
-                rocket.style.transition = 'bottom 1.5s cubic-bezier(0.25, 1, 0.5, 1), opacity 1.5s ease';
-                rocket.style.bottom = '110vh'; // स्क्रीन के पार ऊपर चला जाएगा
-            }, 50);
-
-            // थोड़े समय बाद रॉकेट को वापस नीचे ले आएं ताकि दोबारा क्लिक करने पर फिर से उड़ सके
-            setTimeout(() => {
-                rocket.style.opacity = '0';
-                rocket.style.bottom = '-100px';
-            }, 1600);
-        }
-
-        // वेबसाइट खुलते ही ऑटोमैटिक एक बार रॉकेट लॉन्च हो जाए
-        window.addEventListener('load', () => {
-            setTimeout(launchRocket, 1000);
-        });
-    </script>
 </body>
 </html>
