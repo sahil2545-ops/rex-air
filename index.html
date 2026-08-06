@@ -47,7 +47,6 @@
             gap: 15px;
         }
 
-        /* Vector SVG Logo Container */
         .svg-logo-wrapper {
             width: 48px;
             height: 48px;
@@ -68,6 +67,31 @@
             color: #00d2ff;
         }
 
+        .nav-buttons {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        /* Gaming Launch Button */
+        .launch-btn {
+            background: linear-gradient(135deg, #00d2ff, #0044ff);
+            color: #fff;
+            padding: 8px 16px;
+            border-radius: 20px;
+            border: none;
+            font-weight: 700;
+            font-size: 0.85rem;
+            cursor: pointer;
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.5);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .launch-btn:hover {
+            transform: scale(1.08);
+            box-shadow: 0 0 25px rgba(0, 210, 255, 0.8);
+        }
+
         .insta-btn {
             background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
             color: #fff;
@@ -85,6 +109,19 @@
 
         .insta-btn:hover {
             transform: scale(1.05);
+        }
+
+        /* Flying Rocket Animation element */
+        #flying-rocket {
+            position: fixed;
+            bottom: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 3.5rem;
+            z-index: 999;
+            pointer-events: none;
+            transition: none;
+            filter: drop-shadow(0 0 20px rgba(0, 210, 255, 0.9));
         }
 
         /* Hero Section */
@@ -271,11 +308,13 @@
 
     <canvas id="starfield"></canvas>
 
-    <!-- Header Navigation with Exact REX Crown Vector Logo -->
+    <!-- Flying Rocket Game Element -->
+    <div id="flying-rocket">🚀</div>
+
+    <!-- Header Navigation with Logo & Launch Game Button -->
     <header>
         <div class="logo-container">
             <div class="svg-logo-wrapper">
-                <!-- Exact REX Crown + Orbit Vector Art -->
                 <svg viewBox="0 0 100 100" width="100%" height="100%">
                     <defs>
                         <linearGradient id="rexGrad" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -283,19 +322,21 @@
                             <stop offset="100%" stop-color="#00d2ff" />
                         </linearGradient>
                     </defs>
-                    <!-- Geometric REX Crown -->
                     <path d="M 20,48 L 30,22 L 50,40 L 70,22 L 80,48 Z" fill="none" stroke="url(#rexGrad)" stroke-width="5" stroke-linejoin="round"/>
                     <path d="M 50,12 L 50,40" stroke="url(#rexGrad)" stroke-width="5" stroke-linecap="round"/>
                     <line x1="25" y1="53" x2="75" y2="53" stroke="url(#rexGrad)" stroke-width="4" stroke-linecap="round"/>
-                    <!-- Swooshing Space Orbit Arc -->
                     <path d="M 15,75 Q 60,65 85,25" fill="none" stroke="#00d2ff" stroke-width="4" stroke-linecap="round"/>
                 </svg>
             </div>
             <div class="logo-text">REX <span>AEROSPACE</span></div>
         </div>
-        <a href="https://www.instagram.com/rexaerospace?igsh=cnR2M3d2M2ZzZDZi" target="_blank" class="insta-btn">
-            📷 Instagram
-        </a>
+        
+        <div class="nav-buttons">
+            <button class="launch-btn" onclick="launchRocket()">🚀 Launch Rocket</button>
+            <a href="https://www.instagram.com/rexaerospace?igsh=cnR2M3d2M2ZzZDZi" target="_blank" class="insta-btn">
+                📷 Instagram
+            </a>
+        </div>
     </header>
 
     <!-- Hero Section -->
@@ -308,8 +349,6 @@
 
     <!-- Content Area -->
     <div class="container">
-
-        <!-- Rocket Showcase Section -->
         <h2 class="section-title">Launch Vehicles & Fleet 🚀</h2>
         <div class="rocket-showcase">
             <div class="rocket-grid">
@@ -332,26 +371,22 @@
             </div>
         </div>
 
-        <!-- Tech Cards -->
         <h2 class="section-title">Core Propulsion Tech</h2>
         <div class="grid">
             <div class="card">
                 <h3>⚛️ Laser B-11 Fusion Engine</h3>
                 <p>Direct energy conversion using advanced laser confinement, producing ultra-high exhaust velocities for deep space transit.</p>
             </div>
-
             <div class="card">
                 <h3>🌌 Interplanetary Transit</h3>
                 <p>Designed for fast-transit Earth-to-Mars missions, reducing travel duration while protecting payloads with magnetic field shields.</p>
             </div>
-
             <div class="card">
                 <h3>⚡ High-Efficiency Nozzles</h3>
                 <p>Superconducting magnetic nozzles engineered for dynamic exhaust vector control without structural wear.</p>
             </div>
         </div>
 
-        <!-- Founder Profile -->
         <div class="founder-box">
             <div class="svg-logo-wrapper" style="margin: 0 auto; width: 60px; height: 60px;">
                 <svg viewBox="0 0 100 100" width="100%" height="100%">
@@ -374,6 +409,7 @@
     </footer>
 
     <script>
+        // Starfield Canvas
         const canvas = document.getElementById('starfield');
         const ctx = canvas.getContext('2d');
 
@@ -406,6 +442,7 @@
         }
         animateStars();
 
+        // 3D Engine Core Visualizer
         const fCanvas = document.getElementById('fusion-canvas');
         const fCtx = fCanvas.getContext('2d');
         fCanvas.width = 220;
@@ -441,6 +478,30 @@
             requestAnimationFrame(drawFusionCore);
         }
         drawFusionCore();
+
+        // Rocket Launch Game Function
+        function launchRocket() {
+            const rocket = document.getElementById('flying-rocket');
+            rocket.style.transition = 'none';
+            rocket.style.bottom = '-100px';
+            rocket.style.opacity = '1';
+
+            setTimeout(() => {
+                rocket.style.transition = 'bottom 1.5s cubic-bezier(0.25, 1, 0.5, 1), opacity 1.5s ease';
+                rocket.style.bottom = '110vh'; // स्क्रीन के पार ऊपर चला जाएगा
+            }, 50);
+
+            // थोड़े समय बाद रॉकेट को वापस नीचे ले आएं ताकि दोबारा क्लिक करने पर फिर से उड़ सके
+            setTimeout(() => {
+                rocket.style.opacity = '0';
+                rocket.style.bottom = '-100px';
+            }, 1600);
+        }
+
+        // वेबसाइट खुलते ही ऑटोमैटिक एक बार रॉकेट लॉन्च हो जाए
+        window.addEventListener('load', () => {
+            setTimeout(launchRocket, 1000);
+        });
     </script>
 </body>
 </html>
