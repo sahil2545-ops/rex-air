@@ -1,25 +1,371 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>REX Aerospace</title>
+    <title>REX Aerospace | Next-Gen Fusion Propulsion Systems</title>
     <style>
-        body { background-color: #0b0d17; color: #ffffff; font-family: sans-serif; text-align: center; padding: 50px 20px; }
-        h1 { color: #00d2ff; font-size: 36px; }
-        .card { background: #161b33; border: 1px solid #00d2ff; border-radius: 10px; padding: 20px; max-width: 500px; margin: 20px auto; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #050711;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        /* Starfield Canvas Background */
+        #starfield {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+        }
+
+        /* Header Navigation */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background: rgba(10, 15, 30, 0.6);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0, 210, 255, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 800;
+            letter-spacing: 3px;
+            color: #ffffff;
+            text-shadow: 0 0 10px rgba(0, 210, 255, 0.8);
+        }
+
+        .logo span {
+            color: #00d2ff;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 40px 20px;
+            position: relative;
+        }
+
+        .badge {
+            background: rgba(0, 210, 255, 0.1);
+            border: 1px solid #00d2ff;
+            color: #00d2ff;
+            padding: 6px 18px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.3);
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 900;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            background: linear-gradient(180deg, #ffffff 0%, #a5c9ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            color: #a0aec0;
+            max-width: 700px;
+            line-height: 1.6;
+            margin-bottom: 35px;
+        }
+
+        /* Interactive 3D Reactor Canvas */
+        #fusion-canvas {
+            width: 280px;
+            height: 280px;
+            margin: 20px auto;
+        }
+
+        /* Glassmorphism Cards Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 40px;
+            color: #00d2ff;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(0, 210, 255, 0.15);
+            border-radius: 16px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(0, 210, 255, 0.6);
+            box-shadow: 0 10px 30px rgba(0, 210, 255, 0.2);
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            font-size: 1.3rem;
+            color: #ffffff;
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            color: #94a3b8;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Tech Spec Table */
+        .spec-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        .spec-table td {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            font-size: 0.9rem;
+        }
+
+        .spec-table td:first-child {
+            color: #94a3b8;
+        }
+
+        .spec-table td:last-child {
+            color: #00d2ff;
+            text-align: right;
+            font-weight: 600;
+        }
+
+        /* Founder Tag */
+        .founder-box {
+            text-align: center;
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.8), rgba(30, 58, 138, 0.3));
+            border: 1px solid rgba(0, 210, 255, 0.3);
+            border-radius: 20px;
+            padding: 40px 20px;
+            margin-top: 50px;
+        }
+
+        .founder-name {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-top: 10px;
+        }
+
+        .founder-title {
+            color: #00d2ff;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            background: rgba(5, 7, 17, 0.9);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: #64748b;
+            font-size: 0.85rem;
+        }
     </style>
 </head>
 <body>
-    <h1>REX AEROSPACE</h1>
-    <p>Next-Gen Fusion Propulsion Systems</p>
-    <div class="card">
-        <h2>🚀 Propulsion Systems</h2>
-        <p>Developing ASTRAEA-1 Aneutronic Fusion Engines.</p>
+
+    <!-- Space Canvas -->
+    <canvas id="starfield"></canvas>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="logo">REX <span>AEROSPACE</span></div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="badge">Aneutronic Fusion Technology</div>
+        <h1>POWERING THE INTERPLANETARY FUTURE</h1>
+        <p>Developing next-generation ASTRAEA-1 fusion propulsion engines to accelerate deep space exploration and interplanetary transit.</p>
+
+        <!-- Animated 3D Fusion Core Engine Visualizer -->
+        <canvas id="fusion-canvas"></canvas>
+    </section>
+
+    <!-- Core Systems & Spec Section -->
+    <div class="container">
+        <h2 class="section-title">Propulsion Systems</h2>
+        <div class="grid">
+            
+            <div class="card">
+                <div class="card-icon">⚛️</div>
+                <h3>ASTRAEA-1 Fusion Core</h3>
+                <p>Advanced magnetic confinement reactor utilizing aneutronic reaction cycles to minimize radiation and maximize thermal thrust conversion.</p>
+                <table class="spec-table">
+                    <tr><td>Target Specific Impulse</td><td>100,000+ s</td></tr>
+                    <tr><td>Fuel Cycle</td><td>He-3 / p-B11</td></tr>
+                    <tr><td>Ignition System</td><td>Laser Confinement</td></tr>
+                </table>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">🌌</div>
+                <h3>Interplanetary Transit</h3>
+                <p>Reducing Earth-to-Mars transit windows significantly, enabling continuous high-thrust propulsion profiles for manned and heavy-cargo payloads.</p>
+                <table class="spec-table">
+                    <tr><td>Mars Transit Window</td><td>< 45 Days</td></tr>
+                    <tr><td>System Payload Efficiency</td><td>85% Nominal</td></tr>
+                    <tr><td>Thermal Dissipation</td><td>Radiative Array</td></tr>
+                </table>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">⚡</div>
+                <h3>Magnetic Nozzle Array</h3>
+                <p>Direct plasma ejection via high-temperature superconducting (HTS) magnetic fields, maximizing exhaust velocity without nozzle erosion.</p>
+                <table class="spec-table">
+                    <tr><td>Field Strength</td><td>15+ Tesla</td></tr>
+                    <tr><td>Vector Control</td><td>Dynamic Quadrupole</td></tr>
+                    <tr><td>Efficiency Rating</td><td>94% Plasma Flow</td></tr>
+                </table>
+            </div>
+
+        </div>
+
+        <!-- Founder & Leadership -->
+        <div class="founder-box">
+            <div style="font-size: 3rem;">👤</div>
+            <div class="founder-name">SAHIL</div>
+            <div class="founder-title">FOUNDER & CHIEF PROPULSION ARCHITECT</div>
+            <p style="color: #94a3b8; max-width: 600px; margin: 15px auto 0; font-size: 0.95rem;">
+                Leading REX Aerospace to revolutionize spaceflight technology through high-efficiency fusion power.
+            </p>
+        </div>
     </div>
-    <div class="card">
-        <h2>👤 Founder</h2>
-        <p>Sahil</p>
-    </div>
+
+    <footer>
+        &copy; 2026 REX Aerospace Systems. All Rights Reserved.
+    </footer>
+
+    <!-- Interactive Canvas Scripts -->
+    <script>
+        // 1. Starfield Background Animation
+        const canvas = document.getElementById('starfield');
+        const ctx = canvas.getContext('2d');
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        const stars = Array.from({ length: 180 }, () => ({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            size: Math.random() * 1.8,
+            speed: Math.random() * 0.4 + 0.1,
+            opacity: Math.random()
+        }));
+
+        function animateStars() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            stars.forEach(star => {
+                star.y -= star.speed;
+                if (star.y < 0) star.y = canvas.height;
+                
+                ctx.fillStyle = `rgba(0, 210, 255, ${star.opacity})`;
+                ctx.beginPath();
+                ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+                ctx.fill();
+            });
+            requestAnimationFrame(animateStars);
+        }
+        animateStars();
+
+        // 2. Animated 3D Fusion Core Graphic
+        const fCanvas = document.getElementById('fusion-canvas');
+        const fCtx = fCanvas.getContext('2d');
+        fCanvas.width = 280;
+        fCanvas.height = 280;
+
+        let angle = 0;
+        function drawFusionCore() {
+            fCtx.clearRect(0, 0, 280, 280);
+            const cx = 140, cy = 140;
+
+            // Core Glow
+            const gradient = fCtx.createRadialGradient(cx, cy, 10, cx, cy, 80);
+            gradient.addColorStop(0, 'rgba(0, 210, 255, 0.9)');
+            gradient.addColorStop(0.5, 'rgba(0, 150, 255, 0.4)');
+            gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
+            fCtx.fillStyle = gradient;
+            fCtx.beginPath();
+            fCtx.arc(cx, cy, 80, 0, Math.PI * 2);
+            fCtx.fill();
+
+            // Rotating Plasma Rings
+            for (let i = 0; i < 3; i++) {
+                fCtx.save();
+                fCtx.translate(cx, cy);
+                fCtx.rotate(angle * (i + 1) * 0.5);
+                fCtx.strokeStyle = i === 0 ? '#00d2ff' : (i === 1 ? '#0077ff' : '#ffffff');
+                fCtx.lineWidth = 2;
+                fCtx.beginPath();
+                fCtx.ellipse(0, 0, 90 - (i * 15), 30 + (i * 10), Math.PI / 4 * i, 0, Math.PI * 2);
+                fCtx.stroke();
+                fCtx.restore();
+            }
+
+            angle += 0.02;
+            requestAnimationFrame(drawFusionCore);
+        }
+        drawFusionCore();
+    </script>
 </body>
 </html>
+
