@@ -18,7 +18,6 @@
             overflow-x: hidden;
         }
 
-        /* Starfield Canvas Background */
         #starfield {
             position: fixed;
             top: 0;
@@ -33,8 +32,8 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 8%;
-            background: rgba(10, 15, 30, 0.6);
+            padding: 15px 8%;
+            background: rgba(10, 15, 30, 0.75);
             backdrop-filter: blur(12px);
             border-bottom: 1px solid rgba(0, 210, 255, 0.2);
             position: sticky;
@@ -42,28 +41,58 @@
             z-index: 100;
         }
 
-        .logo {
-            font-size: 1.6rem;
-            font-weight: 800;
-            letter-spacing: 3px;
-            color: #ffffff;
-            text-shadow: 0 0 10px rgba(0, 210, 255, 0.8);
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
 
-        .logo span {
+        .logo-img {
+            height: 45px;
+            width: auto;
+            border-radius: 6px;
+            box-shadow: 0 0 10px rgba(0, 210, 255, 0.5);
+        }
+
+        .logo-text {
+            font-size: 1.4rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            color: #ffffff;
+        }
+
+        .logo-text span {
             color: #00d2ff;
+        }
+
+        .insta-btn {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            color: #fff;
+            padding: 8px 18px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 0 12px rgba(220, 39, 67, 0.4);
+            transition: transform 0.2s ease;
+        }
+
+        .insta-btn:hover {
+            transform: scale(1.05);
         }
 
         /* Hero Section */
         .hero {
-            min-height: 90vh;
+            min-height: 85vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
             padding: 40px 20px;
-            position: relative;
         }
 
         .badge {
@@ -76,48 +105,76 @@
             letter-spacing: 2px;
             text-transform: uppercase;
             margin-bottom: 20px;
-            box-shadow: 0 0 15px rgba(0, 210, 255, 0.3);
         }
 
         .hero h1 {
-            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-size: clamp(2.2rem, 5vw, 4rem);
             font-weight: 900;
             letter-spacing: 2px;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             background: linear-gradient(180deg, #ffffff 0%, #a5c9ff 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         .hero p {
-            font-size: clamp(1rem, 2vw, 1.3rem);
+            font-size: clamp(0.95rem, 2vw, 1.2rem);
             color: #a0aec0;
             max-width: 700px;
             line-height: 1.6;
-            margin-bottom: 35px;
+            margin-bottom: 30px;
         }
 
-        /* Interactive 3D Reactor Canvas */
         #fusion-canvas {
-            width: 280px;
-            height: 280px;
-            margin: 20px auto;
+            width: 250px;
+            height: 250px;
+            margin: 10px auto;
         }
 
-        /* Glassmorphism Cards Container */
+        /* Content Sections */
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 60px 20px;
+            padding: 40px 20px;
         }
 
         .section-title {
             text-align: center;
-            font-size: 2rem;
-            margin-bottom: 40px;
+            font-size: 1.8rem;
+            margin-bottom: 35px;
             color: #00d2ff;
             letter-spacing: 2px;
             text-transform: uppercase;
+        }
+
+        /* Rocket Gallery Section */
+        .rocket-showcase {
+            background: rgba(15, 23, 42, 0.7);
+            border: 1px solid rgba(0, 210, 255, 0.3);
+            border-radius: 20px;
+            padding: 25px;
+            backdrop-filter: blur(10px);
+            margin-bottom: 50px;
+            text-align: center;
+        }
+
+        .rocket-img {
+            width: 100%;
+            max-width: 800px;
+            border-radius: 12px;
+            box-shadow: 0 0 25px rgba(0, 210, 255, 0.2);
+            margin-bottom: 20px;
+        }
+
+        .rocket-info h3 {
+            font-size: 1.5rem;
+            color: #ffffff;
+            margin-bottom: 8px;
+        }
+
+        .rocket-info p {
+            color: #94a3b8;
+            font-size: 0.95rem;
         }
 
         .grid {
@@ -130,69 +187,39 @@
             background: rgba(15, 23, 42, 0.6);
             border: 1px solid rgba(0, 210, 255, 0.15);
             border-radius: 16px;
-            padding: 30px;
+            padding: 25px;
             backdrop-filter: blur(10px);
             transition: all 0.3s ease;
         }
 
         .card:hover {
-            transform: translateY(-8px);
-            border-color: rgba(0, 210, 255, 0.6);
-            box-shadow: 0 10px 30px rgba(0, 210, 255, 0.2);
-        }
-
-        .card-icon {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
+            transform: translateY(-5px);
+            border-color: rgba(0, 210, 255, 0.5);
         }
 
         .card h3 {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             color: #ffffff;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
 
         .card p {
             color: #94a3b8;
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        /* Tech Spec Table */
-        .spec-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 15px;
-        }
-
-        .spec-table td {
-            padding: 10px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
             font-size: 0.9rem;
+            line-height: 1.5;
         }
 
-        .spec-table td:first-child {
-            color: #94a3b8;
-        }
-
-        .spec-table td:last-child {
-            color: #00d2ff;
-            text-align: right;
-            font-weight: 600;
-        }
-
-        /* Founder Tag */
         .founder-box {
             text-align: center;
             background: linear-gradient(135deg, rgba(15, 23, 42, 0.8), rgba(30, 58, 138, 0.3));
             border: 1px solid rgba(0, 210, 255, 0.3);
             border-radius: 20px;
-            padding: 40px 20px;
-            margin-top: 50px;
+            padding: 35px 20px;
+            margin-top: 40px;
         }
 
         .founder-name {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             font-weight: 700;
             color: #ffffff;
             margin-top: 10px;
@@ -201,99 +228,97 @@
         .founder-title {
             color: #00d2ff;
             letter-spacing: 2px;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             margin-top: 5px;
         }
 
-        /* Footer */
         footer {
             text-align: center;
-            padding: 30px 20px;
+            padding: 25px 20px;
             background: rgba(5, 7, 17, 0.9);
             border-top: 1px solid rgba(255, 255, 255, 0.05);
             color: #64748b;
             font-size: 0.85rem;
         }
+
+        footer a {
+            color: #00d2ff;
+            text-decoration: none;
+        }
     </style>
 </head>
 <body>
 
-    <!-- Space Canvas -->
     <canvas id="starfield"></canvas>
 
-    <!-- Header Navigation -->
+    <!-- Header Navigation with Logo & Insta Button -->
     <header>
-        <div class="logo">REX <span>AEROSPACE</span></div>
+        <div class="logo-container">
+            <img src="logo.jpg" alt="REX Logo" class="logo-img" onerror="this.style.display='none'">
+            <div class="logo-text">REX <span>AEROSPACE</span></div>
+        </div>
+        <a href="https://www.instagram.com/rexaerospace?igsh=cnR2M3d2M2ZzZDZi" target="_blank" class="insta-btn">
+            📷 Instagram
+        </a>
     </header>
 
     <!-- Hero Section -->
     <section class="hero">
         <div class="badge">Aneutronic Fusion Technology</div>
         <h1>POWERING THE INTERPLANETARY FUTURE</h1>
-        <p>Developing next-generation ASTRAEA-1 fusion propulsion engines to accelerate deep space exploration and interplanetary transit.</p>
-
-        <!-- Animated 3D Fusion Core Engine Visualizer -->
+        <p>Developing next-generation ASTRAEA-1 & Laser B-11 fusion propulsion engines to accelerate deep space exploration.</p>
         <canvas id="fusion-canvas"></canvas>
     </section>
 
-    <!-- Core Systems & Spec Section -->
+    <!-- Content Area -->
     <div class="container">
-        <h2 class="section-title">Propulsion Systems</h2>
-        <div class="grid">
-            
-            <div class="card">
-                <div class="card-icon">⚛️</div>
-                <h3>ASTRAEA-1 Fusion Core</h3>
-                <p>Advanced magnetic confinement reactor utilizing aneutronic reaction cycles to minimize radiation and maximize thermal thrust conversion.</p>
-                <table class="spec-table">
-                    <tr><td>Target Specific Impulse</td><td>100,000+ s</td></tr>
-                    <tr><td>Fuel Cycle</td><td>He-3 / p-B11</td></tr>
-                    <tr><td>Ignition System</td><td>Laser Confinement</td></tr>
-                </table>
-            </div>
 
-            <div class="card">
-                <div class="card-icon">🌌</div>
-                <h3>Interplanetary Transit</h3>
-                <p>Reducing Earth-to-Mars transit windows significantly, enabling continuous high-thrust propulsion profiles for manned and heavy-cargo payloads.</p>
-                <table class="spec-table">
-                    <tr><td>Mars Transit Window</td><td>< 45 Days</td></tr>
-                    <tr><td>System Payload Efficiency</td><td>85% Nominal</td></tr>
-                    <tr><td>Thermal Dissipation</td><td>Radiative Array</td></tr>
-                </table>
+        <!-- Rocket Showcase Section -->
+        <h2 class="section-title">Launch Vehicles & Fleet</h2>
+        <div class="rocket-showcase">
+            <img src="rocket.jpg" alt="REX-1 Rocket Concepts" class="rocket-img" onerror="this.style.display='none'">
+            <div class="rocket-info">
+                <h3>REX-1 Interstellar Prototype Concepts</h3>
+                <p>Equipped with Laser B-11 Fusion Engines & Advanced Thermal Shielding 🇮🇳</p>
             </div>
-
-            <div class="card">
-                <div class="card-icon">⚡</div>
-                <h3>Magnetic Nozzle Array</h3>
-                <p>Direct plasma ejection via high-temperature superconducting (HTS) magnetic fields, maximizing exhaust velocity without nozzle erosion.</p>
-                <table class="spec-table">
-                    <tr><td>Field Strength</td><td>15+ Tesla</td></tr>
-                    <tr><td>Vector Control</td><td>Dynamic Quadrupole</td></tr>
-                    <tr><td>Efficiency Rating</td><td>94% Plasma Flow</td></tr>
-                </table>
-            </div>
-
         </div>
 
-        <!-- Founder & Leadership -->
+        <!-- Tech Cards -->
+        <h2 class="section-title">Core Propulsion Tech</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>⚛️ Laser B-11 Fusion Engine</h3>
+                <p>Direct energy conversion using advanced laser confinement, producing ultra-high exhaust velocities for deep space transit.</p>
+            </div>
+
+            <div class="card">
+                <h3>🌌 Interplanetary Transit</h3>
+                <p>Designed for fast-transit Earth-to-Mars missions, reducing travel duration while protecting payloads with magnetic field shields.</p>
+            </div>
+
+            <div class="card">
+                <h3>⚡ High-Efficiency Nozzles</h3>
+                <p>Superconducting magnetic nozzles engineered for dynamic exhaust vector control without structural wear.</p>
+            </div>
+        </div>
+
+        <!-- Founder Profile -->
         <div class="founder-box">
-            <div style="font-size: 3rem;">👤</div>
+            <div style="font-size: 2.5rem;">👤</div>
             <div class="founder-name">SAHIL</div>
             <div class="founder-title">FOUNDER & CHIEF PROPULSION ARCHITECT</div>
-            <p style="color: #94a3b8; max-width: 600px; margin: 15px auto 0; font-size: 0.95rem;">
+            <p style="color: #94a3b8; max-width: 600px; margin: 15px auto 0; font-size: 0.9rem;">
                 Leading REX Aerospace to revolutionize spaceflight technology through high-efficiency fusion power.
             </p>
         </div>
     </div>
 
     <footer>
-        &copy; 2026 REX Aerospace Systems. All Rights Reserved.
+        &copy; 2026 REX Aerospace Systems. Follow us on <a href="https://www.instagram.com/rexaerospace?igsh=cnR2M3d2M2ZzZDZi" target="_blank">Instagram (@rexaerospace)</a>
     </footer>
 
-    <!-- Interactive Canvas Scripts -->
     <script>
-        // 1. Starfield Background Animation
+        // Starfield Canvas
         const canvas = document.getElementById('starfield');
         const ctx = canvas.getContext('2d');
 
@@ -317,7 +342,6 @@
             stars.forEach(star => {
                 star.y -= star.speed;
                 if (star.y < 0) star.y = canvas.height;
-                
                 ctx.fillStyle = `rgba(0, 210, 255, ${star.opacity})`;
                 ctx.beginPath();
                 ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
@@ -327,28 +351,26 @@
         }
         animateStars();
 
-        // 2. Animated 3D Fusion Core Graphic
+        // 3D Engine Core Visualizer
         const fCanvas = document.getElementById('fusion-canvas');
         const fCtx = fCanvas.getContext('2d');
-        fCanvas.width = 280;
-        fCanvas.height = 280;
+        fCanvas.width = 250;
+        fCanvas.height = 250;
 
         let angle = 0;
         function drawFusionCore() {
-            fCtx.clearRect(0, 0, 280, 280);
-            const cx = 140, cy = 140;
+            fCtx.clearRect(0, 0, 250, 250);
+            const cx = 125, cy = 125;
 
-            // Core Glow
-            const gradient = fCtx.createRadialGradient(cx, cy, 10, cx, cy, 80);
+            const gradient = fCtx.createRadialGradient(cx, cy, 10, cx, cy, 70);
             gradient.addColorStop(0, 'rgba(0, 210, 255, 0.9)');
             gradient.addColorStop(0.5, 'rgba(0, 150, 255, 0.4)');
             gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
             fCtx.fillStyle = gradient;
             fCtx.beginPath();
-            fCtx.arc(cx, cy, 80, 0, Math.PI * 2);
+            fCtx.arc(cx, cy, 70, 0, Math.PI * 2);
             fCtx.fill();
 
-            // Rotating Plasma Rings
             for (let i = 0; i < 3; i++) {
                 fCtx.save();
                 fCtx.translate(cx, cy);
@@ -356,7 +378,7 @@
                 fCtx.strokeStyle = i === 0 ? '#00d2ff' : (i === 1 ? '#0077ff' : '#ffffff');
                 fCtx.lineWidth = 2;
                 fCtx.beginPath();
-                fCtx.ellipse(0, 0, 90 - (i * 15), 30 + (i * 10), Math.PI / 4 * i, 0, Math.PI * 2);
+                fCtx.ellipse(0, 0, 80 - (i * 12), 25 + (i * 8), Math.PI / 4 * i, 0, Math.PI * 2);
                 fCtx.stroke();
                 fCtx.restore();
             }
@@ -368,4 +390,5 @@
     </script>
 </body>
 </html>
+
 
