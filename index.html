@@ -32,7 +32,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 8%;
+            padding: 12px 8%;
             background: rgba(10, 15, 30, 0.85);
             backdrop-filter: blur(12px);
             border-bottom: 1px solid rgba(0, 210, 255, 0.3);
@@ -44,21 +44,17 @@
         .logo-container {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 15px;
         }
 
-        /* Crown / Space Logo Badge */
-        .logo-badge {
-            width: 42px;
-            height: 42px;
-            background: linear-gradient(135deg, #00d2ff, #0044ff);
-            border-radius: 50%;
+        /* Vector SVG Logo Container */
+        .svg-logo-wrapper {
+            width: 48px;
+            height: 48px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.4rem;
-            box-shadow: 0 0 15px rgba(0, 210, 255, 0.6);
-            border: 2px solid #ffffff;
+            filter: drop-shadow(0px 0px 8px rgba(0, 210, 255, 0.6));
         }
 
         .logo-text {
@@ -138,7 +134,6 @@
             margin: 10px auto;
         }
 
-        /* Content Sections */
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -154,7 +149,6 @@
             text-transform: uppercase;
         }
 
-        /* Rocket Showcase Card */
         .rocket-showcase {
             background: rgba(15, 23, 42, 0.8);
             border: 1px solid rgba(0, 210, 255, 0.4);
@@ -277,10 +271,26 @@
 
     <canvas id="starfield"></canvas>
 
-    <!-- Header Navigation with Crown Logo & Insta Button -->
+    <!-- Header Navigation with Exact REX Crown Vector Logo -->
     <header>
         <div class="logo-container">
-            <div class="logo-badge">👑</div>
+            <div class="svg-logo-wrapper">
+                <!-- Exact REX Crown + Orbit Vector Art -->
+                <svg viewBox="0 0 100 100" width="100%" height="100%">
+                    <defs>
+                        <linearGradient id="rexGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#2b589c" />
+                            <stop offset="100%" stop-color="#00d2ff" />
+                        </linearGradient>
+                    </defs>
+                    <!-- Geometric REX Crown -->
+                    <path d="M 20,48 L 30,22 L 50,40 L 70,22 L 80,48 Z" fill="none" stroke="url(#rexGrad)" stroke-width="5" stroke-linejoin="round"/>
+                    <path d="M 50,12 L 50,40" stroke="url(#rexGrad)" stroke-width="5" stroke-linecap="round"/>
+                    <line x1="25" y1="53" x2="75" y2="53" stroke="url(#rexGrad)" stroke-width="4" stroke-linecap="round"/>
+                    <!-- Swooshing Space Orbit Arc -->
+                    <path d="M 15,75 Q 60,65 85,25" fill="none" stroke="#00d2ff" stroke-width="4" stroke-linecap="round"/>
+                </svg>
+            </div>
             <div class="logo-text">REX <span>AEROSPACE</span></div>
         </div>
         <a href="https://www.instagram.com/rexaerospace?igsh=cnR2M3d2M2ZzZDZi" target="_blank" class="insta-btn">
@@ -343,7 +353,14 @@
 
         <!-- Founder Profile -->
         <div class="founder-box">
-            <div style="font-size: 2.5rem;">👑</div>
+            <div class="svg-logo-wrapper" style="margin: 0 auto; width: 60px; height: 60px;">
+                <svg viewBox="0 0 100 100" width="100%" height="100%">
+                    <path d="M 20,48 L 30,22 L 50,40 L 70,22 L 80,48 Z" fill="none" stroke="url(#rexGrad)" stroke-width="5" stroke-linejoin="round"/>
+                    <path d="M 50,12 L 50,40" stroke="url(#rexGrad)" stroke-width="5" stroke-linecap="round"/>
+                    <line x1="25" y1="53" x2="75" y2="53" stroke="url(#rexGrad)" stroke-width="4" stroke-linecap="round"/>
+                    <path d="M 15,75 Q 60,65 85,25" fill="none" stroke="#00d2ff" stroke-width="4" stroke-linecap="round"/>
+                </svg>
+            </div>
             <div class="founder-name">SAHIL</div>
             <div class="founder-title">FOUNDER & CHIEF PROPULSION ARCHITECT</div>
             <p style="color: #94a3b8; max-width: 600px; margin: 15px auto 0; font-size: 0.9rem;">
@@ -357,7 +374,6 @@
     </footer>
 
     <script>
-        // Starfield Canvas
         const canvas = document.getElementById('starfield');
         const ctx = canvas.getContext('2d');
 
@@ -390,7 +406,6 @@
         }
         animateStars();
 
-        // 3D Engine Core Visualizer
         const fCanvas = document.getElementById('fusion-canvas');
         const fCtx = fCanvas.getContext('2d');
         fCanvas.width = 220;
@@ -429,6 +444,3 @@
     </script>
 </body>
 </html>
-
-
-        
