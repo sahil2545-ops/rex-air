@@ -18,51 +18,85 @@
         }
         .video-overlay {
             position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-            background: rgba(0, 0, 0, 0.5); z-index: -1;
+            background: rgba(0, 0, 0, 0.55); z-index: -1;
         }
 
-        /* Minimalist Navigation */
+        /* Minimalist Navigation Bar */
         header {
             display: flex; justify-content: space-between; align-items: center;
-            padding: 20px 5%; position: sticky; top: 0; z-index: 100;
+            padding: 15px 6%; position: sticky; top: 0; z-index: 100;
+            background: rgba(0,0,0,0.3); backdrop-filter: blur(10px);
         }
-        .logo { font-size: 1.5rem; font-weight: 900; letter-spacing: 4px; color: #fff; }
-        .logo span { color: #00d2ff; }
+
+        /* SpaceX Style Clean Logo Container */
+        .brand-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        /* Golden Logo SVG */
+        .rex-logo-svg {
+            width: 36px;
+            height: 36px;
+            filter: drop-shadow(0 0 6px rgba(212, 175, 55, 0.4));
+        }
+
+        .logo-text {
+            font-size: 1.4rem;
+            font-weight: 900;
+            letter-spacing: 3px;
+            color: #ffffff;
+        }
+
         .nav-links a { 
-            color: #fff; text-decoration: none; font-size: 0.9rem; margin-left: 20px;
-            text-transform: uppercase; letter-spacing: 1px; opacity: 0.8; transition: 0.3s;
+            color: #fff; text-decoration: none; font-size: 0.85rem; margin-left: 20px;
+            text-transform: uppercase; letter-spacing: 1.5px; opacity: 0.8; transition: 0.3s;
         }
-        .nav-links a:hover { opacity: 1; color: #00d2ff; }
+        .nav-links a:hover { opacity: 1; color: #d4af37; }
 
         /* Main Hero Section */
         .hero {
             height: 80vh; display: flex; flex-direction: column; 
             justify-content: center; align-items: center; text-align: center;
+            padding: 0 20px;
         }
-        .hero h1 { font-size: clamp(3rem, 8vw, 6rem); font-weight: 800; line-height: 1; margin-bottom: 20px; }
-        .hero p { font-size: 1.2rem; color: #ccc; max-width: 600px; }
+        .hero h1 { font-size: clamp(2.5rem, 7vw, 5.5rem); font-weight: 800; line-height: 1.1; margin-bottom: 20px; letter-spacing: 2px; }
+        .hero p { font-size: 1.1rem; color: #ccc; max-width: 600px; line-height: 1.6; }
 
-        /* Founder Section (Clean Style) */
+        /* Founder Section */
         .info-section {
-            padding: 80px 20px; max-width: 800px; margin: 0 auto;
+            padding: 60px 20px; max-width: 800px; margin: 0 auto;
             text-align: center; border-top: 1px solid rgba(255,255,255,0.1);
         }
-        .founder-name { font-size: 2rem; margin-bottom: 10px; }
-        .founder-title { color: #00d2ff; text-transform: uppercase; letter-spacing: 2px; font-size: 0.9rem; }
+        .founder-name { font-size: 1.8rem; margin-bottom: 8px; font-weight: 700; }
+        .founder-title { color: #d4af37; text-transform: uppercase; letter-spacing: 2px; font-size: 0.85rem; margin-bottom: 12px; }
 
-        footer { text-align: center; padding: 40px; font-size: 0.8rem; color: #666; }
+        footer { text-align: center; padding: 40px; font-size: 0.8rem; color: #666; letter-spacing: 1px; }
     </style>
 </head>
 <body>
 
-    <!-- 👇 2. Video Background (Exact Filename) 👇 -->
+    <!-- Video Background -->
     <video class="bg-video" autoplay loop muted playsinline>
         <source src="YTShort_06Aug2026_23_32_58.mp4" type="video/mp4">
     </video>
     <div class="video-overlay"></div>
 
     <header>
-        <div class="logo">REX <span>AERO</span></div>
+        <!-- Golden Logo + Name (SpaceX Style) -->
+        <a href="#" class="brand-container">
+            <svg class="rex-logo-svg" viewBox="0 0 100 100">
+                <!-- Crown Shapes in Gold (#D4AF37) -->
+                <path d="M 20,50 L 32,20 L 50,38 L 68,20 L 80,50 Z" fill="none" stroke="#D4AF37" stroke-width="6" stroke-linejoin="round"/>
+                <line x1="20" y1="58" x2="80" y2="58" stroke="#D4AF37" stroke-width="5" stroke-linecap="round"/>
+                <!-- Curved Swoosh Line in Gold -->
+                <path d="M 25,82 Q 60,75 85,30" fill="none" stroke="#D4AF37" stroke-width="5" stroke-linecap="round"/>
+            </svg>
+            <div class="logo-text">REX</div>
+        </a>
+
         <div class="nav-links">
             <a href="https://www.instagram.com/rexaerospace?igsh=cnR2M3d2M2ZzZDZi" target="_blank">Instagram</a>
         </div>
@@ -76,7 +110,7 @@
     <section class="info-section">
         <div class="founder-title">FOUNDER & CHIEF ARCHITECT</div>
         <h2 class="founder-name">SAHIL</h2>
-        <p style="color: #888;">Leading REX Aerospace with a vision for sustainable deep space transit.</p>
+        <p style="color: #888; font-size: 0.95rem;">Leading REX Aerospace with a vision for sustainable deep space transit.</p>
     </section>
 
     <footer>
