@@ -21,10 +21,11 @@
             background: rgba(0, 0, 0, 0.55); z-index: -1;
         }
 
-        /* SpaceX/L&T Style Clean Header */
+        /* SpaceX Style Clean Header */
         header {
             display: flex; justify-content: space-between; align-items: center;
-            padding: 12px 5%; position: sticky; top: 0; z-index: 100;
+            /* ऊपर और नीचे से पैडिंग को थोड़ा कम किया है ताकि बड़ा लोगो सेट हो सके */
+            padding: 10px 5%; position: sticky; top: 0; z-index: 100;
             background: rgba(0,0,0,0.4); backdrop-filter: blur(10px);
         }
 
@@ -34,11 +35,13 @@
             text-decoration: none;
         }
 
-        /* काली PNG इमेज को 100% शाइनी गोल्ड बनाने वाला जादुई फ़िल्टर */
+        /* 👇 लोगो को बड़ा रखने की सेटिंग 👇 */
         .main-logo-img {
-            height: 50px;
+            /* ऊँचाई को 50px से बढ़ाकर 110px किया है ताकि लोगो बड़ा दिखे */
+            height: 110px; 
             width: auto;
             object-fit: contain;
+            /* काली PNG को शाइनी गोल्ड बनाने वाला फ़िल्टर */
             filter: invert(75%) sepia(90%) saturate(400%) hue-rotate(5deg) brightness(110%) contrast(105%) drop-shadow(0 0 8px rgba(212, 175, 55, 0.6));
         }
 
@@ -70,14 +73,14 @@
 </head>
 <body>
 
-    <!-- Video Background -->
+    <!-- Background Video -->
     <video class="bg-video" autoplay loop muted playsinline>
         <source src="YTShort_06Aug2026_23_32_58.mp4" type="video/mp4">
     </video>
     <div class="video-overlay"></div>
 
     <header>
-        <!-- GitHub वाली पारदर्शी PNG इमेज (गोल्डन फ़िल्टर के साथ) -->
+        <!-- GitHub वाली पारदर्शी PNG इमेज (बड़े साइज में) -->
         <a href="#" class="brand-container">
             <img src="1000608799-removebg-preview.png" alt="REX Aerospace Logo" class="main-logo-img">
         </a>
