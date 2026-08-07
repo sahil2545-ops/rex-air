@@ -24,30 +24,32 @@
         }
         .video-overlay {
             position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-            background: rgba(0, 0, 0, 0.6); z-index: -1;
+            background: rgba(0, 0, 0, 0.5); z-index: -1;
         }
 
-        /* Clean Header - Logo Only */
+        /* Fully Transparent Header - काला पट्टा हटा दिया */
         header {
             display: flex; justify-content: center; align-items: center;
-            padding: 15px 5%; position: sticky; top: 0; z-index: 100;
-            background: rgba(0,0,0,0.5); backdrop-filter: blur(10px);
+            padding: 20px 5% 5px 5%; 
+            position: absolute; top: 0; left: 0; width: 100%; z-index: 100;
+            background: transparent; /* 100% पारदर्शी */
         }
 
         .brand-container { display: flex; align-items: center; text-decoration: none; }
 
+        /* 🔥 लोगो का साइज बढ़ाकर 140px कर दिया */
         .main-logo-img {
-            height: 90px;
+            height: 140px;
             width: auto;
             object-fit: contain;
-            filter: invert(75%) sepia(90%) saturate(400%) hue-rotate(5deg) brightness(110%) contrast(105%) drop-shadow(0 0 8px rgba(212, 175, 55, 0.6));
+            filter: invert(75%) sepia(90%) saturate(400%) hue-rotate(5deg) brightness(110%) contrast(105%) drop-shadow(0 0 10px rgba(212, 175, 55, 0.7));
         }
 
         /* Hero Section */
         .hero {
-            min-height: 80vh; display: flex; flex-direction: column; 
+            min-height: 85vh; display: flex; flex-direction: column; 
             justify-content: center; align-items: center; text-align: center;
-            padding: 40px 20px;
+            padding: 120px 20px 40px 20px; /* ऊपर से जगह दी ताकि लोगो के नीचे टेक्स्ट आये */
         }
         .hero h1 { font-size: clamp(2.5rem, 7vw, 5.5rem); font-weight: 800; line-height: 1.1; margin-bottom: 15px; letter-spacing: 2px; }
         .hero p { font-size: 1.1rem; color: #ccc; max-width: 650px; line-height: 1.6; margin-bottom: 30px; }
@@ -107,7 +109,7 @@
     </video>
     <div class="video-overlay"></div>
 
-    <!-- Top Navigation (Logo Only) -->
+    <!-- Fully Transparent Header with Big Logo -->
     <header>
         <a href="#" class="brand-container">
             <img src="1000608799-removebg-preview.png" alt="REX Aerospace Logo" class="main-logo-img">
@@ -131,7 +133,7 @@
         <p style="color: #888; font-size: 0.95rem;">Leading REX Aerospace with a vision for sustainable deep space transit.</p>
     </section>
 
-    <!-- Footer with Instagram & Email Links -->
+    <!-- Footer -->
     <footer>
         <div class="footer-links">
             <a href="https://www.instagram.com/rexaerospace?igsh=cnR2M3d2M2ZzZDZi" target="_blank" class="footer-link">📷 Follow Us on Instagram</a>
@@ -142,4 +144,3 @@
 
 </body>
 </html>
-
