@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
-    <!-- 👇 1. अपना Google Verification content कोड यहाँ डालें 👇 -->
+    <!-- 👇 अपना Google Verification content कोड यहाँ रखें 👇 -->
     <meta name="google-site-verification" content="यहाँ_अपना_गूगल_कोड_content_डालें" />
 
     <meta charset="UTF-8">
@@ -11,7 +11,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', 'Segoe UI', sans-serif; }
         body { background-color: #000; color: #fff; overflow-x: hidden; }
 
-        /* Video Background */
+        /* Background Video */
         .bg-video {
             position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
             object-fit: cover; z-index: -2;
@@ -21,36 +21,25 @@
             background: rgba(0, 0, 0, 0.55); z-index: -1;
         }
 
-        /* Header Navigation */
+        /* SpaceX/L&T Style Clean Header */
         header {
             display: flex; justify-content: space-between; align-items: center;
-            padding: 15px 6%; position: sticky; top: 0; z-index: 100;
-            background: rgba(0,0,0,0.3); backdrop-filter: blur(10px);
+            padding: 12px 5%; position: sticky; top: 0; z-index: 100;
+            background: rgba(0,0,0,0.4); backdrop-filter: blur(10px);
         }
 
-        /* Golden Logo & Name Container */
         .brand-container {
             display: flex;
             align-items: center;
-            gap: 12px;
             text-decoration: none;
         }
 
-        /* SVG Logo - Golden Style */
-        .rex-logo-svg {
-            width: 42px;
-            height: 42px;
-            filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.5));
-        }
-
-        /* Golden REX Text */
-        .logo-text {
-            font-size: 1.5rem;
-            font-weight: 900;
-            letter-spacing: 3px;
-            background: linear-gradient(135deg, #FFE57F 0%, #D4AF37 50%, #AA7C11 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        /* काली PNG इमेज को 100% शाइनी गोल्ड बनाने वाला जादुई फ़िल्टर */
+        .main-logo-img {
+            height: 50px;
+            width: auto;
+            object-fit: contain;
+            filter: invert(75%) sepia(90%) saturate(400%) hue-rotate(5deg) brightness(110%) contrast(105%) drop-shadow(0 0 8px rgba(212, 175, 55, 0.6));
         }
 
         .nav-links a { 
@@ -59,7 +48,7 @@
         }
         .nav-links a:hover { opacity: 1; color: #D4AF37; }
 
-        /* Main Hero Section */
+        /* Hero Section */
         .hero {
             height: 80vh; display: flex; flex-direction: column; 
             justify-content: center; align-items: center; text-align: center;
@@ -81,31 +70,16 @@
 </head>
 <body>
 
-    <!-- Background Video -->
+    <!-- Video Background -->
     <video class="bg-video" autoplay loop muted playsinline>
         <source src="YTShort_06Aug2026_23_32_58.mp4" type="video/mp4">
     </video>
     <div class="video-overlay"></div>
 
     <header>
-        <!-- Exact Golden Crown + Swoosh + Golden REX Text -->
+        <!-- GitHub वाली पारदर्शी PNG इमेज (गोल्डन फ़िल्टर के साथ) -->
         <a href="#" class="brand-container">
-            <svg class="rex-logo-svg" viewBox="0 0 120 120">
-                <defs>
-                    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stop-color="#FFE57F" />
-                        <stop offset="50%" stop-color="#D4AF37" />
-                        <stop offset="100%" stop-color="#AA7C11" />
-                    </linearGradient>
-                </defs>
-                <!-- Crown Points -->
-                <path d="M 25,58 L 15,28 L 42,46 L 60,15 L 78,46 L 105,28 L 95,58 Z" fill="none" stroke="url(#goldGrad)" stroke-width="6" stroke-linejoin="round"/>
-                <!-- Base Bar under Crown -->
-                <line x1="28" y1="68" x2="92" y2="68" stroke="url(#goldGrad)" stroke-width="5" stroke-linecap="round"/>
-                <!-- Long Swoosh Swooping From Left Bottom to Top Right -->
-                <path d="M 20,102 Q 70,95 108,35" fill="none" stroke="url(#goldGrad)" stroke-width="5" stroke-linecap="round"/>
-            </svg>
-            <div class="logo-text">REX</div>
+            <img src="1000608799-removebg-preview.png" alt="REX Aerospace Logo" class="main-logo-img">
         </a>
 
         <div class="nav-links">
@@ -120,7 +94,7 @@
 
     <section class="info-section">
         <div class="founder-title">FOUNDER & CHIEF ARCHITECT</div>
-        <h2 class="founder-name">SAHIL</h2>
+        <h2 class="founder-name">SAHIL ZAFAR</h2>
         <p style="color: #888; font-size: 0.95rem;">Leading REX Aerospace with a vision for sustainable deep space transit.</p>
     </section>
 
