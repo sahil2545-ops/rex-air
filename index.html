@@ -24,22 +24,22 @@
         }
         .video-overlay {
             position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-            background: rgba(0, 0, 0, 0.5); z-index: -1;
+            background: rgba(0, 0, 0, 0.55); z-index: -1;
         }
 
-        /* Fully Transparent Header - काला पट्टा हटा दिया */
+        /* Fully Transparent Header - Logo aligned to the LEFT */
         header {
-            display: flex; justify-content: center; align-items: center;
-            padding: 20px 5% 5px 5%; 
+            display: flex; justify-content: flex-start; align-items: center;
+            padding: 15px 6%; 
             position: absolute; top: 0; left: 0; width: 100%; z-index: 100;
-            background: transparent; /* 100% पारदर्शी */
+            background: transparent;
         }
 
         .brand-container { display: flex; align-items: center; text-decoration: none; }
 
-        /* 🔥 लोगो का साइज बढ़ाकर 140px कर दिया */
+        /* 🔥 लोगो को बड़ा करके LEFT साइड में सेट किया */
         .main-logo-img {
-            height: 140px;
+            height: 110px;
             width: auto;
             object-fit: contain;
             filter: invert(75%) sepia(90%) saturate(400%) hue-rotate(5deg) brightness(110%) contrast(105%) drop-shadow(0 0 10px rgba(212, 175, 55, 0.7));
@@ -47,10 +47,27 @@
 
         /* Hero Section */
         .hero {
-            min-height: 85vh; display: flex; flex-direction: column; 
+            min-height: 90vh; display: flex; flex-direction: column; 
             justify-content: center; align-items: center; text-align: center;
-            padding: 120px 20px 40px 20px; /* ऊपर से जगह दी ताकि लोगो के नीचे टेक्स्ट आये */
+            padding: 100px 20px 40px 20px;
         }
+
+        /* High-Tech Welcome Badge */
+        .welcome-badge {
+            background: rgba(212, 175, 55, 0.15);
+            border: 1px solid rgba(212, 175, 55, 0.5);
+            color: #D4AF37;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
+        }
+
         .hero h1 { font-size: clamp(2.5rem, 7vw, 5.5rem); font-weight: 800; line-height: 1.1; margin-bottom: 15px; letter-spacing: 2px; }
         .hero p { font-size: 1.1rem; color: #ccc; max-width: 650px; line-height: 1.6; margin-bottom: 30px; }
 
@@ -82,7 +99,7 @@
         .founder-name { font-size: 1.8rem; margin-bottom: 8px; font-weight: 700; }
         .founder-title { color: #D4AF37; text-transform: uppercase; letter-spacing: 2px; font-size: 0.85rem; margin-bottom: 12px; }
 
-        /* Footer Links & Contact */
+        /* Footer */
         footer { 
             text-align: center; padding: 40px 20px; font-size: 0.85rem; color: #aaa; 
             letter-spacing: 1px; border-top: 1px solid rgba(255,255,255,0.05);
@@ -109,7 +126,7 @@
     </video>
     <div class="video-overlay"></div>
 
-    <!-- Fully Transparent Header with Big Logo -->
+    <!-- Header - Logo Positioned on LEFT -->
     <header>
         <a href="#" class="brand-container">
             <img src="1000608799-removebg-preview.png" alt="REX Aerospace Logo" class="main-logo-img">
@@ -117,6 +134,9 @@
     </header>
 
     <main class="hero">
+        <!-- 🔥 Welcome Tagline Badge -->
+        <div class="welcome-badge">WELCOME TO REX AEROSPACE</div>
+
         <h1>POWERING THE FUTURE</h1>
         <p>Designing next-generation fusion propulsion engines for interplanetary exploration.</p>
 
